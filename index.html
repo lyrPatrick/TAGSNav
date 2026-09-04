@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="TAGSNav: Target-Aware Online 3D Gaussian Splatting and Active Exploration for Instance Image Goal Navigation">
+
+    <title>TAGSNav</title>
+
+    <style>
+        :root {
+            --blue: #2563eb;
+            --dark: #172033;
+            --text: #344054;
+            --light: #f6f8fc;
+            --border: #e4e7ec;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: var(--text);
+            background: white;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.65;
+        }
+
+        .container {
+            width: min(1050px, calc(100% - 36px));
+            margin: 0 auto;
+        }
+
+        .hero {
+            padding: 70px 0 45px;
+            text-align: center;
+            background: linear-gradient(180deg, #f4f7ff, white);
+        }
+
+        .hero h1 {
+            margin: 0 auto 12px;
+            max-width: 1000px;
+            color: var(--dark);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            line-height: 1.15;
+        }
+
+        .subtitle {
+            max-width: 950px;
+            margin: 0 auto 20px;
+            font-size: 1.35rem;
+            line-height: 1.45;
+        }
+
+        .authors {
+            margin: 18px 0 5px;
+            font-size: 1.05rem;
+        }
+
+        .affiliation {
+            margin: 0;
+            color: #667085;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background: var(--dark);
+            border-radius: 999px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background: var(--blue);
+        }
+
+        section {
+            margin: 65px auto;
+        }
+
+        section h2 {
+            margin-bottom: 24px;
+            color: var(--dark);
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .tldr {
+            padding: 18px 22px;
+            background: var(--light);
+            border-left: 4px solid var(--blue);
+            border-radius: 8px;
+            font-size: 1.08rem;
+        }
+
+        .wide-media {
+            display: block;
+            width: 100%;
+            margin: 25px auto 10px;
+            border-radius: 10px;
+        }
+
+        .caption {
+            margin-top: 8px;
+            color: #667085;
+            text-align: center;
+            font-size: 0.94rem;
+        }
+
+        .placeholder {
+            display: grid;
+            min-height: 260px;
+            margin-top: 25px;
+            padding: 30px;
+            place-items: center;
+            color: #667085;
+            background: var(--light);
+            border: 2px dashed #b8c0cc;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 28px;
+        }
+
+        .card {
+            padding: 22px;
+            background: var(--light);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--dark);
+        }
+
+        pre {
+            overflow-x: auto;
+            padding: 20px;
+            color: #e5e7eb;
+            background: #111827;
+            border-radius: 10px;
+            line-height: 1.45;
+        }
+
+        footer {
+            margin-top: 70px;
+            padding: 30px;
+            color: #667085;
+            background: var(--light);
+            text-align: center;
+        }
+
+        @media (max-width: 760px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                margin: 45px auto;
+            }
+
+            section h2 {
+                font-size: 1.6rem;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="container">
+
+            <h1>TAGSNav</h1>
+
+            <p class="subtitle">
+                Target-Aware Online 3D Gaussian Splatting and Active
+                Exploration for Instance Image Goal Navigation
+            </p>
+
+            <p class="authors">
+                Author 1, Author 2, Author 3
+            </p>
+
+            <p class="affiliation">
+                Beijing Institute of Technology
+            </p>
+
+            <div class="buttons">
+                <a class="button" href="assets/paper/tagsnav.pdf" target="_blank">
+                    Paper
+                </a>
+
+                <a class="button" href="https://github.com/lyrPatrick/TAGSNav" target="_blank">
+                    Code
+                </a>
+
+                <a class="button" href="#videos">
+                    Videos
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="overview">
+
+            <p class="tldr">
+                <strong>TL;DR:</strong>
+                TAGSNav forms a target-aware mapping--exploration loop that
+                improves target-region reconstruction and exploits 3DGS
+                novel-view synthesis for reliable instance localization
+                and navigation.
+            </p>
+
+            <div class="placeholder">
+                Teaser video or overview image will be placed here.
+            </div>
+
+        </section>
+
+        <section id="abstract">
+
+            <h2>Abstract</h2>
+
+            <p>
+                Paste the final English abstract of TAGSNav here.
+            </p>
+
+        </section>
+
+        <section id="method">
+
+            <h2>Method Overview</h2>
+
+            <div class="placeholder">
+                The complete TAGSNav framework figure will be placed here.
+            </div>
+
+            <div class="cards">
+
+                <article class="card">
+                    <h3>Target-Aware Mapping and Exploration</h3>
+
+                    <p>
+                        SKGS refines target-category Gaussians from historical
+                        observations, while SWMI guides future observations
+                        toward uncertain target regions. Together, they form
+                        a guide--observe--refine loop.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <h3>Precise Target Localization</h3>
+
+                    <p>
+                        Coarse-to-fine localization and PnP-based viewpoint
+                        alignment exploit virtual 3DGS renderings for reliable
+                        matching across arbitrary viewpoints.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <h3>Re-exploration and Navigation</h3>
+
+                    <p>
+                        When localization fails, re-exploration collects
+                        supplementary observations of previously seen candidates
+                        before final target navigation.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <section id="results">
+
+            <h2>Quantitative Results</h2>
+
+            <div class="placeholder">
+                The HM3D-SEM SR and SPL comparison table will be placed here.
+            </div>
+
+            <p class="caption">
+                Comparison with online IIN methods on HM3D-SEM under the
+                Free-view setting.
+            </p>
+
+        </section>
+
+        <section id="ablation">
+
+            <h2>Ablation Study</h2>
+
+            <div class="placeholder">
+                The ablation table or reconstruction comparison will be
+                placed here.
+            </div>
+
+            <p>
+                SKGS and SWMI primarily improve target-region reconstruction
+                and path efficiency, whereas fine localization, PVA, and
+                re-exploration improve matching reliability and failure
+                recovery.
+            </p>
+
+        </section>
+
+        <section id="videos">
+
+            <h2>Real-World Deployment</h2>
+
+            <div class="placeholder">
+                The physical-robot demonstration video will be placed here.
+            </div>
+
+            <p>
+                TAGSNav was deployed on a modified Yuhesen FW-Mid Pro mobile
+                chassis without additional training or fine-tuning. The
+                experiments cover long-range observations, occlusion, similar
+                distractors, and safety-constrained navigation.
+            </p>
+
+        </section>
+
+        <section id="limitations">
+
+            <h2>Limitations</h2>
+
+            <p>
+                TAGSNav remains limited by the computational cost of online
+                Gaussian optimization and mutual-information evaluation.
+                Performance may also degrade under severe segmentation errors,
+                extremely texture-poor targets, or incomplete geometry.
+            </p>
+
+        </section>
+
+        <!-- <section id="citation">
+
+        <h2>Citation</h2>
+
+        <pre><code>@inproceedings{tagsnav,
+    title     = {TAGSNav: Target-Aware Online 3D Gaussian Splatting and
+                 Active Exploration for Instance Image Goal Navigation},
+    author    = {Author names},
+    booktitle = {IEEE International Conference on Robotics and Automation},
+    year      = {Year}
+  }</code></pre>
+
+      </section> -->
+
+    </main>
+
+    <footer>
+        TAGSNav Project Page
+    </footer>
+
+</body>
+
+</html>
