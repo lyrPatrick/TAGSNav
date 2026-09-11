@@ -137,21 +137,42 @@
 
         .cards {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: minmax(0, 1fr);
             gap: 18px;
             margin-top: 28px;
         }
 
         .card {
-            padding: 22px;
-            background: var(--light);
+            padding: clamp(22px, 4vw, 34px);
+            background: white;
             border: 1px solid var(--border);
             border-radius: 10px;
         }
 
         .card h3 {
-            margin-top: 0;
+            margin: 0 0 12px;
             color: var(--dark);
+            font-size: 1.3rem;
+            line-height: 1.35;
+        }
+
+        .card p {
+            margin: 0;
+        }
+
+        .card-primary {
+            background: #f0f5ff;
+            border-color: #b8cdfa;
+            border-left: 4px solid var(--blue);
+        }
+
+        .card-primary h3 {
+            color: #1d4ed8;
+            font-size: 1.5rem;
+        }
+
+        .card-summary {
+            background: var(--light);
         }
 
         pre {
@@ -291,34 +312,43 @@
 
             <div class="cards">
 
-                <article class="card">
-                    <h3>Target-Aware Mapping and Exploration</h3>
+                <article class="card card-primary">
+                    <h3>Target-Aware Mapping–Exploration Loop</h3>
 
                     <p>
-                        SKGS refines target-category Gaussians from historical
-                        observations, while SWMI guides future observations
-                        toward uncertain target regions. Together, they form
-                        a guide--observe--refine loop.
+                        TAGSNav couples Incremental Semantic Keyframe-Guided Gaussian Splatting
+                        (SKGS) with Semantically Weighted Mutual Information (SWMI)-guided
+                        exploration in a closed mapping–exploration loop. SKGS refines Gaussian
+                        regions associated with the target category using historical observations,
+                        while SWMI uses Gaussian uncertainty to guide the acquisition of informative
+                        observations. Together, they improve target-region reconstruction under
+                        limited observations and a fixed optimization budget.
                     </p>
                 </article>
 
                 <article class="card">
-                    <h3>Precise Target Localization</h3>
+                    <h3>Instance Localization and Re-exploration</h3>
 
                     <p>
-                        Coarse-to-fine localization and PnP-based viewpoint
-                        alignment exploit virtual 3DGS renderings for reliable
-                        matching across arbitrary viewpoints.
+                        Building on the resulting maps, TAGSNav performs coarse-to-fine instance
+                        localization using novel-view renderings, with viewpoint optimization and
+                        alignment applied when needed to verify localization results. Compensatory
+                        re-exploration gathers additional observations of previously seen candidates
+                        when localization fails. These components reduce false and missed matches
+                        across arbitrary viewpoints.
                     </p>
                 </article>
 
-                <article class="card">
-                    <h3>Re-exploration and Navigation</h3>
+                <article class="card card-summary">
+                    <h3>Complementary Improvements for IIN</h3>
 
                     <p>
-                        When localization fails, re-exploration collects
-                        supplementary observations of previously seen candidates
-                        before final target navigation.
+                        TAGSNav addresses instance image goal navigation from two complementary
+                        perspectives: the mapping–exploration loop improves the quality of the
+                        target-category 3D representations used for matching, while localization
+                        and re-exploration improve the reliability of the matching process.
+                        Together, these improvements support more reliable target-instance
+                        localization and navigation in unknown environments.
                     </p>
                 </article>
 
