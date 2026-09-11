@@ -229,10 +229,10 @@
 
             <p class="tldr">
                 <strong>TL;DR:</strong>
-                TAGSNav forms a target-aware mapping--exploration loop that
-                improves target-region reconstruction and exploits 3DGS
-                novel-view synthesis for reliable instance localization
-                and navigation.
+                TAGSNav couples target-aware online 3D Gaussian Splatting with
+                uncertainty-guided exploration to improve target-region reconstruction
+                under limited observations and computation, enabling reliable instance
+                image goal navigation through viewpoint-aligned matching and re-exploration.
             </p>
 
             <div class="placeholder">
@@ -246,7 +246,28 @@
             <h2>Abstract</h2>
 
             <p>
-                Paste the final English abstract of TAGSNav here.
+                Instance Image Goal Navigation (IIN) is a fundamental task in embodied navigation
+                that requires an agent to locate and navigate to a specific object instance in an
+                unknown environment given a reference image. Its core challenge lies in recognizing
+                the same target instance across viewpoints while distinguishing it from visually
+                similar instances of the same category under sparse observations and computational
+                constraints. Most existing methods use 2D semantic maps or scene graphs, with target
+                appearance representations limited to observed viewpoints, restricting instance
+                matching across arbitrary viewpoints. 3D Gaussian Splatting (3DGS) offers a way to
+                overcome this limitation by enabling viewpoint-aligned matching through novel-view
+                rendering. However, optimization-based online 3DGS still struggles to preserve the
+                reconstruction details needed for instance-level discrimination under sparse
+                observations and limited optimization budgets. To this end, we propose TAGSNav,
+                an online IIN framework coupling Incremental Semantic Keyframe-Guided Gaussian
+                Splatting (SKGS) with Gaussian-uncertainty-driven Semantically Weighted Mutual
+                Information (SWMI)-guided exploration in a closed mapping–exploration loop.
+                This loop uses uncertainty to guide observations, improving online reconstruction
+                quality in target-category regions with limited observations and a fixed optimization
+                budget. Building on the resulting maps, coarse-to-fine localization and compensatory
+                re-exploration reduce false and missed matches across arbitrary viewpoints.
+                Viewpoint alignment is additionally performed when needed to verify localization
+                results. On HM3D, it outperforms state-of-the-art methods in SR and SPL;
+                physical-robot deployment without retraining further verifies Sim2Real generalization.
             </p>
 
         </section>
@@ -255,9 +276,17 @@
 
             <h2>Method Overview</h2>
 
-            <div class="placeholder">
-                The complete TAGSNav framework figure will be placed here.
-            </div>
+            <a href="assets/images/framework.svg" target="_blank" rel="noopener noreferrer"
+                aria-label="Open the TAGSNav framework diagram at full size">
+                <img class="wide-media" src="assets/images/framework.svg"
+                    alt="TAGSNav framework showing semantic mapping, SWMI-guided exploration, coarse-to-fine localization, viewpoint alignment, and re-exploration."
+                    width="1079" height="531" loading="lazy" style="height: auto;">
+            </a>
+            <p class="caption">
+                Overview of TAGSNav: target-aware mapping and exploration support
+                coarse-to-fine instance localization, viewpoint alignment, and re-exploration.
+                Click the figure to view it at full size.
+            </p>
 
             <div class="cards">
 
