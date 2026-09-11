@@ -137,13 +137,13 @@
 
         .cards {
             display: grid;
-            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            grid-template-columns: minmax(0, 54fr) minmax(0, 46fr);
             gap: 18px;
             margin-top: 28px;
         }
 
         .card {
-            padding: clamp(22px, 4vw, 34px);
+            padding: 26px 22px;
             background: var(--light);
             border: 1px solid var(--border);
             border-radius: 10px;
@@ -158,6 +158,10 @@
 
         .card p {
             margin: 0;
+        }
+
+        .card:not(.card-summary) h3 {
+            font-size: 1.125rem;
         }
 
         .card-primary {
