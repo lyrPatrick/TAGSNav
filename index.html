@@ -179,6 +179,18 @@
             background: var(--light);
         }
 
+        .experiment-figure { margin: 24px 0 32px; }
+        .experiment-figure .wide-media { height: auto; border-radius: 0; }
+        .experiment-heading { margin: 38px 0 12px; color: var(--dark); }
+        .table-scroll { overflow-x: auto; }
+        .ablation-table { width: 100%; min-width: 540px; border-collapse: collapse; text-align: center; font-variant-numeric: tabular-nums; }
+        .ablation-table caption { padding: 0 0 16px; font-weight: 600; color: var(--dark); }
+        .ablation-table th, .ablation-table td { padding: 13px 12px; border-bottom: 1px solid var(--border); }
+        .ablation-table thead { background: var(--light); border-top: 2px solid var(--dark); }
+        .ablation-table th:nth-child(5), .ablation-table td:nth-child(5) { border-left: 1px solid var(--border); }
+        .ablation-table .full-model { background: #f0f5ff; border-top: 2px solid var(--blue); border-bottom: 2px solid var(--dark); }
+        .table-note { font-size: 0.9rem; color: #667085; margin-top: 12px; }
+
         pre {
             overflow-x: auto;
             padding: 20px;
@@ -241,7 +253,7 @@
                 </a>
 
                 <a class="button" href="#videos">
-                    Videos
+                    Real-World
                 </a>
             </div>
 
@@ -260,9 +272,14 @@
                 image goal navigation through viewpoint-aligned matching and re-exploration.
             </p>
 
-            <div class="placeholder">
-                Teaser video or overview image will be placed here.
-            </div>
+            <figure class="experiment-figure">
+                <a href="assets/images/porter.svg" target="_blank" rel="noopener noreferrer"
+                    aria-label="Open the TAGSNav overview figure at full size">
+                    <img class="wide-media" src="assets/images/porter.svg"
+                        alt="TAGSNav overview: SKGS mapping and SWMI exploration improve rendering quality and support fine localization."
+                        width="1006" height="559" fetchpriority="high">
+                </a>
+            </figure>
 
         </section>
 
@@ -364,50 +381,69 @@
 
             <h2>Quantitative Results</h2>
 
-            <div class="placeholder">
-                The HM3D-SEM SR and SPL comparison table will be placed here.
-            </div>
+            <figure class="experiment-figure">
+                <a href="assets/images/sr_spl_comparison_vector.svg" target="_blank" rel="noopener noreferrer" aria-label="Open figure at full size">
+                    <img class="wide-media" src="assets/images/sr_spl_comparison_vector.svg" alt="SR and SPL comparison on HM3D-SEM: TAGSNav achieves 71.6% SR and 26.99% SPL." loading="lazy">
+                </a>
+                <figcaption class="caption">SR and SPL comparison with other IIN methods on HM3D-SEM. Higher values indicate better performance. Click the figure to view it at full size.</figcaption>
+            </figure>
+        </section>
 
-            <p class="caption">
-                Comparison with online IIN methods on HM3D-SEM under the
-                Free-view setting.
-            </p>
-
+        <section id="simulation">
+            <h2>Simulation Results</h2>
+            <figure class="experiment-figure">
+                <a href="assets/images/sim-1.svg" target="_blank" rel="noopener noreferrer" aria-label="Open figure at full size">
+                    <img class="wide-media" src="assets/images/sim-1.svg" alt="Simulated navigation episode and localization examples with large viewpoint differences." loading="lazy">
+                </a>
+                <figcaption class="caption">Top: in-situ 3DGS renderings and the trajectory of a successful navigation episode, without triggering re-exploration. Bottom: localization examples with large viewpoint differences between RGB observations and goal images. Click the figure to view it at full size.</figcaption>
+            </figure>
         </section>
 
         <section id="ablation">
-
             <h2>Ablation Study</h2>
-
-            <div class="placeholder">
-                The ablation table or reconstruction comparison will be
-                placed here.
+            <div class="table-scroll" role="region" aria-label="Ablation results" tabindex="0">
+                <table class="ablation-table">
+                    <caption>Ablation study on HM3D-SEM (100 episodes)</caption>
+                    <thead><tr><th scope="col">SKGS</th><th scope="col">SWMI</th><th scope="col">FL+PVA</th><th scope="col">RE</th><th scope="col">SR (%) &uarr;</th><th scope="col">SPL (%) &uarr;</th></tr></thead>
+                    <tbody>
+                        <tr><td><span aria-label="Module not used">&mdash;</span></td><td><span aria-label="Module not used">&mdash;</span></td><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module used">&#10003;</span></td><td>57</td><td>21.90</td></tr>
+                        <tr><td><span aria-label="Module not used">&mdash;</span></td><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module used">&#10003;</span></td><td>62</td><td>23.52</td></tr>
+                        <tr><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module not used">&mdash;</span></td><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module used">&#10003;</span></td><td>64</td><td>24.12</td></tr>
+                        <tr><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module not used">&mdash;</span></td><td><span aria-label="Module used">&#10003;</span></td><td>64</td><td>26.60</td></tr>
+                        <tr><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module not used">&mdash;</span></td><td>66</td><td>27.13</td></tr>
+                        <tr class="full-model"><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module used">&#10003;</span></td><td><span aria-label="Module used">&#10003;</span></td><td><strong>71</strong></td><td><strong>28.22</strong></td></tr>
+                    </tbody>
+                </table>
             </div>
-
-            <p>
-                SKGS and SWMI primarily improve target-region reconstruction
-                and path efficiency, whereas fine localization, PVA, and
-                re-exploration improve matching reliability and failure
-                recovery.
-            </p>
-
+            <p class="table-note">&#10003;: module used; &mdash;: module not used.
+                FL+PVA: fine localization with conditional PnP-based viewpoint alignment;
+                RE: re-exploration. &uarr;: larger is better; best results are in <strong>bold</strong>.</p>
+            <h3 class="experiment-heading">Effect of SKGS on Reconstruction</h3>
+            <figure class="experiment-figure">
+                <a href="assets/images/Fig8_skgs_ablation.png" target="_blank" rel="noopener noreferrer" aria-label="Open figure at full size">
+                    <img class="wide-media" src="assets/images/Fig8_skgs_ablation.png" alt="Side-by-side target-region renderings comparing the SKGS ablation with full TAGSNav." loading="lazy">
+                </a>
+                <figcaption class="caption">Target-region rendering comparison between TAGSNav without SKGS and the full framework. Click the figure to view it at full size.</figcaption>
+            </figure>
+            <h3 class="experiment-heading">Effect of SWMI on Reconstruction</h3>
+            <figure class="experiment-figure">
+                <a href="assets/images/Fig9_swmi_ablation.png" target="_blank" rel="noopener noreferrer" aria-label="Open figure at full size">
+                    <img class="wide-media" src="assets/images/Fig9_swmi_ablation.png" alt="Side-by-side target-region renderings comparing the SWMI ablation with full TAGSNav." loading="lazy">
+                </a>
+                <figcaption class="caption">Target-region rendering comparison between TAGSNav without SWMI and the full framework. Click the figure to view it at full size.</figcaption>
+            </figure>
         </section>
 
         <section id="videos">
-
             <h2>Real-World Deployment</h2>
-
-            <div class="placeholder">
-                The physical-robot demonstration video will be placed here.
-            </div>
-
-            <p>
-                TAGSNav was deployed on a modified Yuhesen FW-Mid Pro mobile
-                chassis without additional training or fine-tuning. The
-                experiments cover long-range observations, occlusion, similar
-                distractors, and safety-constrained navigation.
-            </p>
-
+            <p>TAGSNav was deployed on a modified Yuhesen FW-Mid Pro mobile chassis
+                without additional training or fine-tuning.</p>
+            <figure class="experiment-figure">
+                <a href="assets/images/real-2.svg" target="_blank" rel="noopener noreferrer" aria-label="Open figure at full size">
+                    <img class="wide-media" src="assets/images/real-2.svg" alt="Two real-world scenes with image goals, occupancy maps, 3DGS maps, and refined target renderings." loading="lazy">
+                </a>
+                <figcaption class="caption">Real-world deployment in two scenes, showing the target instances, occupancy maps, 3DGS maps, and refined renderings alongside the goal images. Click the figure to view it at full size.</figcaption>
+            </figure>
         </section>
 
         <section id="limitations">
